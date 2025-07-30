@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.sky.screenpainter.activity.DrawingView
+        android:id="@+id/drawing_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <ImageView
+        android:id="@+id/btn_clear"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:src="@drawable/icon_clear"
+        android:layout_gravity="top|end"
+        android:layout_margin="16dp" />
+
+</FrameLayout>
