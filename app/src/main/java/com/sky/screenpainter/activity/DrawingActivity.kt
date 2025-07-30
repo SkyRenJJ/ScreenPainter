@@ -7,6 +7,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.graphics.Path
+import android.os.Build
 import android.os.Bundle
 import android.view.MotionEvent
 import android.view.WindowManager
@@ -48,7 +49,6 @@ class DrawingActivity : Activity() {
         }
 
 
-        // ✅ 恢复上次保存的数据
         OverlayState.savePaths?.let {
             drawingView?.restorePaths(it)
         }
@@ -58,7 +58,11 @@ class DrawingActivity : Activity() {
 
     override fun onResume() {
         super.onResume()
-        registerReceiver(closeReceiver, IntentFilter("CLOSE_DRAWING"))
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            registerReceiver(closeReceiver, IntentFilter("CLOSE_DRAWING"),RECEIVER_EXPORTED)
+        }else{
+            registerReceiver(closeReceiver, IntentFilter("CLOSE_DRAWING"))
+        }
     }
 
     override fun onPause() {
